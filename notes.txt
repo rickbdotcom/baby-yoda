@@ -1,0 +1,33 @@
+Baby Yoda War
+
+Pick which Yoda is the cutest! I set this site up to collect data for my daughter's science project to scientifically measure cuteness based on variables such as eye and mouth size. Do as many "battles" as you like, the more data the better!
+
+Use Adobe Photoshop's "Liquify" tool with face detection.
+
+Didn't always detect face had to use certain images, probably because designed for human faces. Didn't really find mouth correctly.
+
+applied symmetrically.
+
+eye size
+
+eye height
+
+eye width
+
+eye tilt - didn't do
+
+eye distance
+
+
+nose height/width - also affected mouth because of the way face was detected.
+
+no mouth settings because didn't detect mouth correctly.
+
+fore head
+
+chin height - not used
+
+jawline and face width both used to adjust width of face.
+
+
+can we make an ugly yoda?
