@@ -1,19 +1,30 @@
 Baby Yoda War
-
+A science project to determine why Baby Yoda is so darn cute.
 Begun these cuteness wars have
 
-Pick which Yoda is the cutest! I set this site up to collect data for my daughter's science project to scientifically measure cuteness based on variables such as eye and mouth size. Do as many "battles" as you like, the more data the better!
+Pick which Yoda is the cutest! I set this site up to collect data for my daughter's science project to scientifically measure cuteness based on variables such as eye and mouth size.
+
+Just click or tap on which picture you think is the cutest. Do as many "battles" as you like, the more data we have the better! We will let you know when you get to the end and have matched all possible combinations, but it's a lot so just do as many as you want until you get tired of looking at various permutations of his adorable face.
+
+Let's get started!
 
 About
-Used Adobe Photoshop's "Liquify" tool with face detection. Didn't always detect face had to use certain images, probably because designed for human faces. Didn't really find mouth correctly. Features applied symmetrically.
+We used Adobe Photoshop's "Liquify" tool with face detection. It didn't always detect baby yoda's face so we were restricted to images the tool would detect. This was probably because the tool was trained on human faces. It could not locate Yoda's mouth correctly in any images. All feature changes were applied symmetrically.
+
+The variables measured are based on the Liquify tool settings. Once we enough data from people taking this test we'll try to figure out which of these variable most affects "cuteness".
 
 Eye size
 Eye height
 Eye width
-Eye tilt - didn't do
 Eye distance
 Nose height/width - also affected mouth because of the way face was detected.
-No mouth settings because didn't detect mouth correctly.
 Forehead
-Chin height - not used due to mouth detection issues.
 Jawline and face width both used to adjust width of face.
+
+These were not used
+Chin height, not used due to mouth detection issues.
+No mouth settings were used because didn't detect the mouth correctly.
+Eye tilt - We didn't think it significantly affected the "cuteness".
+
+Spreadsheet of values for each image
+Source code
