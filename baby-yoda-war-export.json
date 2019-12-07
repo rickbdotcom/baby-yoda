@@ -1,32 +1,27 @@
 {
-  "images" : [
-    "0-baseline.jpg",
-    "1-bigface.jpg",
-    "7-smallface-eye-mouth-bigger.jpg",
-    "8.png",
-    "9.png",
-    "10.png",
-    "11.png",
-    "12.png",
-    "13.png",
-    "14.png",
-    "15.png",
-    "16.png",
-    "17.png",
-    "18.png",
-    "19.png",
-    "20.png",
-    "21.png",
-    "22.png",
-    "23.png",
-    "24.png"
-  ],
-  "poll-results" : [
-    [
-      [
-        true,
-        false
-      ]
-    ]
-  ]
+  "images" : {
+    "0" : "0-baseline.jpg",
+    "1" : "1-bigface.jpg",
+    "2" : "2-smallface.jpg",
+    "7" : "7-smallface-eye-mouth-bigger.jpg",
+    "8" : "8-bigface-normal-eyes.jpg",
+    "9" : "9-small-mouth.jpg",
+    "10" : "10-small-mouth-shorter.jpg",
+    "11" : "11-small-mouth-longer.jpg",
+    "12" : "12-closer-eyes.jpg",
+    "13" : "13-scrunched-head.jpg",
+    "14" : "14-smallface-scrunched.jpg",
+    "15" : "15-smallface-wide-mouth.jpg",
+    "16" : "16-smallface-wide-mouth-scrunched.jpg",
+    "17" : "17-smallface-wide-mouth-scrunched2.jpg",
+    "18" : "18-smallface-wide-mouth-scrunched3.jpg",
+    "19" : "19-bigface-small-mouth.jpg",
+    "20" : "20-bigeyes.jpg",
+    "21" : "21-smaller-face.jpg",
+    "22" : "22-smaller-face-closer-eyes.jpg",
+    "23" : "23-smaller-face-wider-eyes.jpg",
+    "24" : "24-closer-eyes.jpg",
+    "25" : "25-small-nose-wide-eyes.jpg",
+    "26" : "26-small-nose.jpg"
+  }
 }

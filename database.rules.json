@@ -1,6 +1,13 @@
 {
-  "rules": {
-    ".read": true,
-    ".write": true
+  "rules" : {
+    "images" : {
+      ".write" : false,
+      ".read" : "auth != null"
+    },
+    "poll-results" : {
+      "$uid" : {
+        ".write" : "$uid === auth.uid"
+      }
+    }
   }
 }

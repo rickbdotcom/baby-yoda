@@ -8,11 +8,10 @@ app.controller('YodaPollController', function($scope) {
 				firebase.database().ref('/images').once('value').then(function(snapshot) {
 					var images = [];
 					snapshot.forEach(function(child) {
-						images.push({id: child.key, url: "/poll-images/" + child.val() });
+						images.push({ id: child.key, url: "/poll-images/" + child.val() });
 					});
-					
-					$scope.images = images;
-					$scope.shuffleImages();					
+					$scope.matchups = shuffle(generateMatchups(images));
+					$scope.nextMatchup();					
 					$scope.$apply();
 				});
 			}
@@ -22,14 +21,33 @@ app.controller('YodaPollController', function($scope) {
 		console.error(e);
 	}
 	
+	$scope.matchupIndex = -1;
+	
 	$scope.selected = function(image) {
-		$scope.shuffleImages();
+		$scope.recordResult(image);
+		$scope.nextMatchup();
 	}
 	
-	$scope.shuffleImages = function() {
-		let shuffledImages = shuffle($scope.images);
-		$scope.image1 = shuffledImages[0];
-		$scope.image2 = shuffledImages[1];
+	$scope.recordResult = function(image) {
+		let matchup = $scope.currentMatchup();
+		let resultPath = "poll-results/" + firebase.auth().currentUser.uid + "/" + matchup[0].id + "-" + matchup[1].id;
+		firebase.database().ref(resultPath).set(image.id);
+	}
+	
+	$scope.currentMatchup = function() {
+		return $scope.matchups[$scope.matchupIndex];
+	}
+	
+	$scope.nextMatchup = function() {
+		$scope.matchupIndex++;
+
+		if ($scope.matchupIndex < $scope.matchups.length) {
+			let matchup = $scope.currentMatchup();
+			$scope.image1 = matchup[0];
+			$scope.image2 = matchup[1];
+		} else {
+			alert('all done!');
+		}
 	}
 });
 
@@ -43,3 +61,13 @@ function shuffle(a) {
     }
     return a;
 }
+
+function generateMatchups(images) {
+	var matchups = [];
+	for (i = 0; i < images.length; i++) {
+		for(j = i + 1; j < images.length; j++) {
+			matchups.push([images[i], images[j]]);
+		}
+	}
+	return matchups;
+} 
