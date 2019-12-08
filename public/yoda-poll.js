@@ -20,7 +20,8 @@ app.controller('YodaPollController', function($scope) {
 	} catch (e) {
 		console.error(e);
 	}
-	
+	$scope.started = false;
+	$scope.done = false
 	$scope.matchupIndex = -1;
 	
 	$scope.selected = function(image) {
@@ -40,14 +41,25 @@ app.controller('YodaPollController', function($scope) {
 	
 	$scope.nextMatchup = function() {
 		$scope.matchupIndex++;
-
+		$scope.toggleSelected = false;
+		
 		if ($scope.matchupIndex < $scope.matchups.length) {
 			let matchup = $scope.currentMatchup();
 			$scope.image1 = matchup[0];
 			$scope.image2 = matchup[1];
+			$scope.toggleImage = matchup[0];
 		} else {
-			alert('all done!');
+			$scope.done = true;
 		}
+	}
+	
+	$scope.start = function() {
+		$scope.started = true;
+	}
+	
+	$scope.toggle = function() {
+		$scope.toggleSelected = true;
+		$scope.toggleImage = $scope.toggleImage == $scope.image1 ? $scope.image2 : $scope.image1;
 	}
 });
 

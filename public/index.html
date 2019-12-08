@@ -1,27 +1,88 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Baby Yoda War</title>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Baby Yoda War</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/7.5.1/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/7.5.1/firebase-auth.js"></script>
-    <script defer src="/__/firebase/7.5.1/firebase-database.js"></script>
-    <script defer src="/__/firebase/7.5.1/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/7.5.1/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-  </head>
-  <body>
-
-<div ng-app="YodaPoll" ng-controller="YodaPollController">
-	<img ng-src="{{image1.url}}" ng-click="selected(image1)">
-	<img ng-src="{{image2.url}}" ng-click="selected(image2)">
-</div>
-<script src="yoda-poll.js"></script>
-  </body>
+		<!-- update the version number as needed -->
+		<script defer src="/__/firebase/7.5.1/firebase-app.js"></script>
+		<!-- include only the Firebase features as you need -->
+		<script defer src="/__/firebase/7.5.1/firebase-auth.js"></script>
+		<script defer src="/__/firebase/7.5.1/firebase-database.js"></script>
+		<script defer src="/__/firebase/7.5.1/firebase-messaging.js"></script>
+		<script defer src="/__/firebase/7.5.1/firebase-storage.js"></script>
+		<!-- initialize the SDK after all desired features are loaded -->
+		<script defer src="/__/firebase/init.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+		<style>
+		img.selected {
+			border: 5px solid blue;
+		}
+		img.unselected {
+			border: 5px solid transparent;
+		}
+		img.toggle-unselected {
+			border: 5px solid transparent;
+			opacity: 0.5;
+		}
+		</style>
+	</head>
+	<body>
+		<div ng-app="YodaPoll" ng-controller="YodaPollController">
+			<div ng-show="!done">
+				<div ng-show="!started">
+					<center>
+						<div><b>A science project to determine why Baby Yoda is so darn cute.</b></div>
+						<p>
+						<i><b>"Begun these cuteness wars have"</b></i>
+					</center>
+					<p>Pick which Yoda is the cutest! I set this site up to collect data for my daughter's science project to scientifically measure cuteness based on variables such as eye and mouth size.</p>
+					<p>Just click or tap on which picture you think is the cutest. Do as many "battles" as you like, the more data we have the better! We will let you know when you get to the end and have matched all possible combinations, but it's a lot so just do as many as you want until you get tired of looking at various permutations of his adorable face.</p>
+					<center><a href="" ng-click="start()">Let's get started! This is the way!</a></center>
+					<p>
+					<p><b>About</b></p>
+					We used Adobe Photoshop's "Liquify" tool with face detection. It didn't always detect baby yoda's face so we were restricted to images the tool would detect. This was probably because the tool was trained on human faces. It could not locate Yoda's mouth correctly in any images. All feature changes were applied symmetrically.
+					<p>
+					The variables measured are based on the Liquify tool settings. Once we enough data from people taking this test we'll try to figure out which of these variable most affects "cuteness".
+					<p>
+					<ul>
+						<li>Eye size</li>
+						<li>Eye height</li>
+						<li>Eye width</li>
+						<li>Eye distance</li>
+						<li>Nose height/width - also affected mouth because of the way face was detected.</li>
+						<li>Forehead</li>
+						<li>Jawline and face width both used to adjust width of face.</li>
+					</ul>
+					<p>These were not used</p>
+					<ul>
+						<li>No mouth settings were used because didn't detect the mouth correctly.</li>
+						<li>Chin height also not used due to mouth detection issues.</li>
+						<li>Eye tilt - We didn't think it significantly affected the "cuteness".</li>
+					</ul>
+					<p>
+					<a href="variables.csv">Spreadsheet of values for each image</a>
+					<p>
+					<a href="https://www.github.com/rickbdotcom/baby-yoda">Source code</a>
+				</div>
+				<div ng-show="started"><center>
+					Tap on which image you think is the cutest, do as many as you like.
+					<p>
+					<img ng-src="{{image1.url}}" ng-click="selected(image1)" ng-class="image1 == toggleImage && toggleSelected ? 'selected' : 'unselected'">
+					<img ng-src="{{image2.url}}" ng-click="selected(image2)" ng-class="image2 == toggleImage && toggleSelected ? 'selected' : 'unselected'">
+					<p>
+					If you're having trouble telling the difference tap the image below to switch back and forth between the two.
+					</p>
+					<img ng-src="{{toggleImage.url}}" ng-click="toggle(toggleImage)" ng-class="toggleSelected ? 'selected' : 'toggle-unselected'">
+					<p>
+					<button ng-disabled="toggleSelected == false" ng-click="selected(toggleImage)">This is one the cutest, I have spoken.</button>
+				</center></div>
+			</div>
+			<div ng-show="done">
+				<center>You're all done! Thanks for your time! Once her science project is over we'll post the results.</center>
+			</div>
+		</div>
+		<script src="yoda-poll.js"></script>
+	</body>
 </html>
